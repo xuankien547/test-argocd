@@ -1,25 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
+  name: nginx
   namespace: default
   labels:
-    app: myapp
+    app: nginx
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myapp
+      app: nginx
   template:
     metadata:
       labels:
-        app: myapp
+        app: nginx
     spec:
       containers:
-        - name: myapp
+        - name: nginx
           image: nginx:latest
+          imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 80
+            - name: http
+              containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 15
           resources:
             requests:
               cpu: "100m"
