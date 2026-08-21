@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  myapp:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-08-21T06:32:13.474939514Z"
+    description: A Helm chart for myapp
+    digest: ff46db55432b23f290ca1ae903587bdeddae3296035c386fb24eb936293f3f96
+    name: myapp
+    type: application
+    urls:
+    - https://xuankien547.github.io/test-argocd/helm-repo/myapp-0.1.0.tgz
+    version: 0.1.0
+generated: "2026-08-21T06:32:13.464652423Z"
